@@ -103,35 +103,37 @@
     var script = document.createElement("script");
     script.src = loaderUrl;
     script.onload = () => {
+        var gameInstance;
         createUnityInstance(canvas, config, (progress) => {
             progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
             loadingBar.style.display = "none";
+            gameInstance = unityInstance;
             fullscreenButton.onclick = () => {
                 unityInstance.SetFullscreen(1);
             };
         }).catch((message) => {
             alert(message);
         });
-    };
-    var eventAccelerationX = null;
 
-    function AddAccelerationEventX(objSource, msg) {
-        if (eventAccelerationX == undefined) {
-            eventAccelerationX = function (event) {
-                //console.log(event.acceleration.x + ' m/s2');
-                unityInstance.SendMessage(objSource, msg, event.acceleration.x);
+        var eventAccelerationX = null;
+
+        function AddAccelerationEventX(objSource, msg) {
+            if (eventAccelerationX == undefined) {
+                eventAccelerationX = function (event) {
+                    //console.log(event.acceleration.x + ' m/s2');
+                    gameInstance.SendMessage(objSource, msg, event.acceleration.x);
+                }
+            }
+            window.addEventListener('devicemotion', eventAccelerationX);
+        }
+
+        function RemoveInputAccelerationEventX() {
+            if (eventAccelerationX != undefined) {
+                window.removeEventListener('devicemotion', eventAccelerationX);
             }
         }
-        window.addEventListener('devicemotion', eventAccelerationX);
-    }
-
-    function RemoveInputAccelerationEventX() {
-        if (eventAccelerationX != undefined) {
-            window.removeEventListener('devicemotion', eventAccelerationX);
-        }
-    }
-
+    };
     document.body.appendChild(script);
 </script>
 </body>
