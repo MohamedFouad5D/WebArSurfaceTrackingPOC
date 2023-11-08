@@ -9,12 +9,12 @@ function AddAccelerationEventX(objSource, msg)
             gameInstance.SendMessage(objSource, msg, event.acceleration.x);
         }
     }
-    window.addEventListener('devicemotion', eventAccelerationX);
+    window.addEventListener('deviceorientation', eventAccelerationX);
 }
 function RemoveInputAccelerationEventX()
 {
     if (eventAccelerationX != undefined)
     {
-        window.removeEventListener('devicemotion', eventAccelerationX);
+        window.removeEventListener('deviceorientation', eventAccelerationX);
     }
 }
