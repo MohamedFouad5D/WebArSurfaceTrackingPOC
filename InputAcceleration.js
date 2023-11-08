@@ -15,6 +15,6 @@ function RemoveInputAccelerationEventX()
 {
     if (eventAccelerationX != undefined)
     {
-        window.removeEventListener('deviceorientation', eventAccelerationX);
+        window.removeEventListener('devicemotion', eventAccelerationX);
     }
 }
