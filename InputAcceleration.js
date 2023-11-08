@@ -6,7 +6,7 @@ function AddAccelerationEventX(objSource, msg)
         eventAccelerationX = function(event)
         {
             //console.log(event.acceleration.x + ' m/s2');
-            gameInstance.SendMessage(objSource, msg, event.acceleration.x);
+            gameInstance.SendMessage(objSource, msg, event.beta);
         }
     }
     window.addEventListener('deviceorientation', eventAccelerationX);
