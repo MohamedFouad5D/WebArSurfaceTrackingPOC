@@ -6,15 +6,15 @@ function AddAccelerationEventX(objSource, msg)
         eventAccelerationX = function(event)
         {
             //console.log(event.acceleration.x + ' m/s2');
-            gameInstance.SendMessage(objSource, msg, event.acceleration.x);
+            gameInstance.SendMessage(objSource, msg, event.beta);
         }
     }
-    window.addEventListener('devicemotion', eventAccelerationX);
+    window.addEventListener('deviceorientation', eventAccelerationX);
 }
 function RemoveInputAccelerationEventX()
 {
     if (eventAccelerationX != undefined)
     {
-        window.removeEventListener('devicemotion', eventAccelerationX);
+        window.removeEventListener('deviceorientation', eventAccelerationX);
     }
 }
