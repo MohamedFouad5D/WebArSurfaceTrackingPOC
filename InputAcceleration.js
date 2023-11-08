@@ -5,8 +5,12 @@ function AddAccelerationEventX(objSource, msg)
     {
         eventAccelerationX = function(event)
         {
-            //console.log(event.acceleration.x + ' m/s2');
-            gameInstance.SendMessage(objSource, msg, event.beta);
+            var accelData = {
+                alpha: event.alpha,
+                beta: event.beta,
+                gamma: event.gamma      
+            };
+            gameInstance.SendMessage(objSource, msg, accelData);
         }
     }
     window.addEventListener('deviceorientation', eventAccelerationX);
