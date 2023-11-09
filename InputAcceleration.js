@@ -7,7 +7,6 @@ function AddAccelerationEventX(objSource, msg) {
                 alpha: event.alpha,
                 beta: event.beta,
                 gamma: event.gamma
-                absolute: event.absolute
             };
           
             var data = JSON.stringify(accelData);
