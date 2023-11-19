@@ -8,7 +8,6 @@ function AddAccelerationEventX(objSource, msg) {
                 beta: event.beta,
                 gamma: event.gamma
             };
-            accelData.alpha = accelData.alpha < 0 ? accelData.alpha + 360 : accelData.alpha;
             var data = JSON.stringify(accelData);
             gameInstance.SendMessage(objSource, msg, data);
         }
