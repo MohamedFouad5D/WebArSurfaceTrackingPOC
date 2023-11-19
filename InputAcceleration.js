@@ -4,11 +4,11 @@ function AddAccelerationEventX(objSource, msg) {
     if (eventAccelerationX == undefined) {
         eventAccelerationX = function (event) {
             var accelData = {
-                alpha: event.alpha < 0 ? event.alpha + 360 : event.alpha;,
+                alpha: event.alpha
                 beta: event.beta,
                 gamma: event.gamma
             };
-          
+            accelData.alpha = accelData.alpha < 0 ? accelData.alpha + 360 : accelData.alpha;
             var data = JSON.stringify(accelData);
             gameInstance.SendMessage(objSource, msg, data);
         }
