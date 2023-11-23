@@ -4,9 +4,9 @@ function AddAccelerationEventX(objSource, msg) {
     if (eventAccelerationX == undefined) {
         eventAccelerationX = function (event) {
             var accelData = {
-                alpha: event.alpha,
-                beta: event.beta,
-                gamma: event.gamma
+                alpha: event.rotationRate.alpha,
+                beta: event.rotationRate.beta,
+                gamma: event.rotationRate.gamma
             };
           
             var data = JSON.stringify(accelData);
